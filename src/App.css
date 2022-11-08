@@ -1,0 +1,116 @@
+*{
+  margin:0px;
+  padding: 0px;
+  box-sizing: border-box;
+}
+
+body{
+  font-weight: 500;
+  font-family: 'Baloo Bhai 2', cursive;
+  background-color: rgba(149, 180, 221, 0.26);
+}
+.header{
+  display: flex;
+  padding: 20px 45px 20px 15px;
+  align-items: center;
+  background-color: rgba(5, 233, 233, 0.211);
+  box-shadow: 0 0 25px rgba(0, 0, 0, 0.25);
+  font-size: 18px;
+}
+
+.logo-img{
+  width: 200px;
+}
+
+.menu{
+  display: flex;
+  gap: 18px;
+  margin-right: auto;
+}
+
+.cart-icon-box{
+
+position: relative;
+}
+.cart-icon{
+ font-size: 30px;
+}
+.item-added{
+  position:absolute;
+  top:-11px;
+  right: -9px;
+  background-color: rgb(2, 111, 2);
+  border-radius: 50%;
+  width: 20px;
+  height: 20px; 
+  text-align: center;
+  padding-bottom: 2px;
+  height: 23px;
+  width: 23px;
+  color: white;
+}
+/* product List */
+.productList{
+  margin-top: 50px;
+  margin-bottom: 50px;
+  display: flex;
+  gap:20px;
+  padding: 0 20px 0 20px;
+  flex-wrap: wrap;
+  flex-basis: 100px;
+  justify-content: center;
+}
+
+/* product */
+.product-container{
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 0 25px rgba(255, 255, 255, 0.25);
+  padding: 30px 5px 20px 5px;
+  flex-basis: 300px;
+  margin-top: 5px;
+  border-radius: 15px;
+  background-color: white;
+
+}
+.product-image-container{
+  display: flex;
+  justify-content: center;
+}
+
+.product-img{
+  width: 250px;
+}
+.product-title{
+  font-size: 25px;
+  font-weight: bold;
+  text-align: center;
+  margin-top: 5px;
+}
+
+.product-discription{
+  text-align: center;
+  margin-top: 5px;
+}
+
+.quantity-button{
+  width: 35px;
+  height: 25px;
+  border-radius: 5px;
+  font-weight: bold;
+  font-size: 16px;
+}
+
+.quantity{
+  display: flex;
+  gap: 8px;
+  margin-top: 19px;
+  margin-bottom: 15px;
+  justify-content: center;
+}
+
+.product-price{
+  text-align: center;
+}
+
+
