@@ -14,9 +14,12 @@ const CartProduct = () => {
             BASMATI RICE
         </div>
         <div className='product-price'>
-            <p>₹ {100.00}</p>
+            <p>{1} × ₹ {100.00}</p>
         </div>
         <AddRemoveButton methods={[add,remove]} state={[productQuantity]}/>
+      </div>
+      <div className='cart-product-total-price'>
+      <p>₹ {100.00}</p>
       </div>
       
     </div>

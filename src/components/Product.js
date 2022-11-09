@@ -5,9 +5,11 @@ import AddToCartButton from '../utils/AddToCartButton';
 
 const Product = (props) => {
     const {product,methods} = useContext(GlobleInfo);
+    const {myCart} = useContext(GlobleInfo);
+    const [cart,addProductCart] = myCart;
     const [productQuantity,setProductQuantity] = product;
     const [add,remove] = methods;
-    console.log(props)
+    // console.log(props)
   return (
     <div className='product-container'>
         <div className='product-image-container'>
@@ -22,8 +24,8 @@ const Product = (props) => {
         <div className='product-discription'>
         {props.discription}
         </div>
-        <AddRemoveButton methods={[add,remove]} state={[productQuantity]}/>
-        <AddToCartButton/>
+        <AddRemoveButton methods={[add,remove]} state={[productQuantity]} />
+        <AddToCartButton id={props.id} />
     </div>
   )
 }

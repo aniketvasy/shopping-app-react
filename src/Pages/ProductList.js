@@ -7,7 +7,7 @@ import { Outlet } from 'react-router-dom';
 
 const ProductList = () => {
   const {product_json} = useContext(GlobleInfo);
-  console.log(product_json);
+  // console.log(product_json);
   // const List = product_json.map((product)=>(
   //   <Product
   //   name={product.name}
