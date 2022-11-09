@@ -1,5 +1,6 @@
 import React, {useContext } from 'react'
 import { AiOutlineShoppingCart } from "react-icons/ai";
+import { Outlet } from 'react-router-dom';
 import { GlobleInfo } from '../App.js';
 
 const Header = () => {
@@ -10,6 +11,7 @@ const Header = () => {
   console.log(productQuantity)
 
   return (
+    <>
     <div className='header'>
         <div className='logo'>
             <img src='images/logo_vasyerp_nav.png' className='logo-img'/>
@@ -25,6 +27,8 @@ const Header = () => {
             <span className='item-added'>{productQuantity}</span>
         </div>
     </div>
+    <Outlet/>
+    </>
   )
 }
 

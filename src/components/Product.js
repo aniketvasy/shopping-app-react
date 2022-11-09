@@ -1,8 +1,11 @@
 import React, { useContext } from 'react'
 import { GlobleInfo } from '../App';
+import AddRemoveButton from '../utils/AddRemoveButton';
+import AddToCartButton from '../utils/AddToCartButton';
 
 const Product = (props) => {
-    const {product,methods} = useContext(GlobleInfo)
+    const {product,methods} = useContext(GlobleInfo);
+    const [productQuantity,setProductQuantity] = product;
     const [add,remove] = methods;
     console.log(props)
   return (
@@ -19,11 +22,8 @@ const Product = (props) => {
         <div className='product-discription'>
         {props.discription}
         </div>
-        <div className='quantity'>
-            <button className=' quantity-button add-quantity' onClick={()=>{add()}}>+</button>
-            <span>{product}</span>
-            <button className='quantity-button remove-quantity' onClick={()=>{remove()}} >-</button>
-        </div>
+        <AddRemoveButton methods={[add,remove]} state={[productQuantity]}/>
+        <AddToCartButton/>
     </div>
   )
 }
