@@ -1,14 +1,16 @@
-import React from 'react'
+import React, { useContext } from 'react'
+import { GlobleInfo } from '../App';
 
 const AddRemoveButton = (props) => {
-    const [add,remove] = props.methods;
-    const [productQuantity] = props.state;
+    const productQuantity = props.state;
+    const {myCart} = useContext(GlobleInfo);
+    const [cart,addProductCart,removeProductCart] = myCart;
   return (
     <>
     <div className='quantity'>
-    <button className=' quantity-button add-quantity' onClick={()=>{add()}}>+</button>
+    <button className=' quantity-button add-quantity' onClick={()=>addProductCart(props.productDetailsForCart)}>+</button>
     <p>{productQuantity}</p>
-    <button className='quantity-button remove-quantity' onClick={()=>{remove()}}>-</button>
+    <button className='quantity-button remove-quantity' onClick={()=>removeProductCart(props.productDetailsForCart)}>-</button>
     </div>
     </>
   )

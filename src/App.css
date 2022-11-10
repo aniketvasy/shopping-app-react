@@ -122,7 +122,8 @@ position: relative;
 .addToCart{
   display: flex;
   justify-content: center;
-  margin-top: 5px;
+  margin-top: 15.8px;
+  margin-bottom: 13px;
 }
 .AddToCartButton{
   display: flex;

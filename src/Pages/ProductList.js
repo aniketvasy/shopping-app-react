@@ -6,7 +6,9 @@ import { Outlet } from 'react-router-dom';
 
 
 const ProductList = () => {
-  const {product_json} = useContext(GlobleInfo);
+  const {product_json,myCart} = useContext(GlobleInfo);
+
+
   // console.log(product_json);
   // const List = product_json.map((product)=>(
   //   <Product

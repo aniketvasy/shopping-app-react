@@ -1,7 +1,7 @@
 import './App.css';
 import Header from './components/Header'
 import ProductList from './Pages/ProductList'
-import { useState, createContext } from "react";
+import { useState, createContext, useEffect } from "react";
 import {product_json} from './product.js';
 import { Route, Routes } from 'react-router-dom';
 import CartProductList from './Pages/CartProductList';
@@ -12,36 +12,97 @@ function App() {
   const [productQuantity,setProductQuantity] = useState(10)
   const [products,setProducts] = useState(product_json);
   const [cart,setCart] = useState([]);
-  const add = ()=>{
-  setProductQuantity(productQuantity+1);
-  }
+ 
 
-  const remove = ()=>{
-      if(productQuantity){
-       setProductQuantity(productQuantity-1);
-      }
-  }
-
-  const addProductCart = (id) =>{
-
+  const addProductCart = (productDetailsForCart) =>{
+    const {name:name,url:url,id:id,price:price} = productDetailsForCart
     setCart((prevcart)=>{
-      const cartProductFound = prevcart.filter((cart_product)=>CartProduct.id == id)
-      console.log("cartProdct",cartProductFound)
-      console.log("prevCart",cart)
-
+      const cartProductFound = prevcart.filter((cart_product)=>{
+        // console.log("founded id",cart_product)
+        // console.log(cart)
+        return cart_product.cartId == id
       
-      if(cartProductFound){  
-        console.log("Found")
-        return ([
-          prevcart.map((cart_product)=>{
-            if(cart_product.id === id){
-              return {...cart_product,cartQty:cart_product.cartQty+1}
+      })
+      function addQty(){
+        return(
+        prevcart.map((cart_product)=>{
+          if(cart_product.cartId === id){
+            // console.log("ddd p", {...cart_product})
+            return {...cart_product,cartQty:cart_product.cartQty+1}
+          }
+          else{
+            return {...cart_product}
           }
         }
         )
-        ])
+      )
+      }
+      // console.log("founded arr",cartProductFound)
+      if(cartProductFound.length>0){  
+        // console.log("Found------")
+        return (
+          addQty()
+        )
       }else{
-        console.log("Not Found")
+        // console.log("Not Found")
+        return [...prevcart,{cartId:id,cartQty:1}]
+      }
+    }
+    )
+  }
+
+  const removeProductCart = (productDetailsForCart) =>{
+    let isZero = false;
+    const {name:name,url:url,id:id,price:price} = productDetailsForCart
+    setCart((prevcart)=>{
+      const cartProductFound = prevcart.filter((cart_product)=>{
+        // console.log("founded id",cart_product)
+        // console.log(cart)
+        return cart_product.cartId == id
+      
+      })
+      function removeQty(){
+        return(
+        prevcart.map((cart_product)=>{
+          if(cart_product.cartId === id){
+            // console.log("ddd p", {...cart_product})
+            if(cart_product.cartQty-1==0){
+              isZero = true
+              console.log("yes this is zero")
+            }
+            console.log(cart_product.cartQty)
+            return {...cart_product,cartQty:cart_product.cartQty-1}
+          }
+          else{
+            return {...cart_product}
+          }
+        }
+        )
+      )
+      }
+      // console.log("founded arr",cartProductFound)
+      if(cartProductFound.length>0){  
+        // console.log("Found------")
+        let arr = removeQty();
+        if(isZero){
+          return(
+            arr.filter((zeroP)=>{
+              if(zeroP.cartQty==0){
+                return false;
+              }
+              else{
+                return true;
+              }
+            })
+          )
+        }else{
+          return arr
+        }
+        // return (
+        //   removeQty()
+        // )
+      }else{
+        // console.log("Not Found")
         return [...prevcart,{cartId:id,cartQty:1}]
       }
     }
@@ -50,7 +111,7 @@ function App() {
 
   return (
     <>
-    <GlobleInfo.Provider value={{product:[productQuantity,setProductQuantity],methods:[add,remove], product_json:product_json,myCart:[cart,addProductCart]}}>
+    <GlobleInfo.Provider value={{product:[productQuantity,setProductQuantity], product_json:product_json,myCart:[cart,addProductCart,removeProductCart]}}>
     <Routes>
      <Route path='/' element={<Header/>} >
        <Route index element={<ProductList/>}/>

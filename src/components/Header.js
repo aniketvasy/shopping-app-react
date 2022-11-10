@@ -7,6 +7,8 @@ const Header = () => {
 
   const {product} = useContext(GlobleInfo)
   const [productQuantity,setProductQuantity] = product;
+  const {myCart} = useContext(GlobleInfo);
+  const [cart] = myCart;
  
 
   return (
@@ -26,7 +28,7 @@ const Header = () => {
         <Link to={'/cart-product-list'}>
         <div className='cart-icon-box'>
             <AiOutlineShoppingCart className='cart-icon'/>
-            <span className='item-added'><p className='header-cart-qty'>{productQuantity}</p></span>
+            <span className='item-added'><p className='header-cart-qty'>{cart.length}</p></span>
         </div>
         </Link>
     </div>
