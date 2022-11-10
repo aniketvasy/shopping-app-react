@@ -24,7 +24,7 @@ const Product = (props) => {
       setCartProductQty(checkQty(props.id))
     })
 // console.log("hello",cartProductQty)
-console.log("cart",cart)
+// console.log("cart",cart)
   return (
     <div className='product-container'>
         <div className='product-image-container'>
@@ -42,12 +42,12 @@ console.log("cart",cart)
 
        
        { cartProductQty>0 ? <AddRemoveButton  state={cartProductQty} productDetailsForCart={{
-          name:props.id,
+          name:props.name,
           url:props.url,
           id:props.id,
           price:props.price
         }} />:<AddToCartButton productDetailsForCart={{
-          name:props.id,
+          name:props.name,
           url:props.url,
           id:props.id,
           price:props.price

@@ -2,23 +2,32 @@ import React, { useContext } from 'react'
 import { GlobleInfo } from '../App';
 import AddRemoveButton from '../utils/AddRemoveButton'
 
-const CartProduct = () => {
-  const {product,methods} = useContext(GlobleInfo);
-  const [productQuantity,setProductQuantity] = product;
+const CartProduct = (props) => {
+  // const {product,methods} = useContext(GlobleInfo);
+  // const [productQuantity,setProductQuantity] = product;
   return (
     <div className='cart-product'>
-      <div className='cart-product-image-container'><img src="https://browntree.in/wp-content/uploads/2021/03/PRO-NAT.BASMATI-RICE-1kg.jpg" className='cart-product-img'/></div>
+      <div className='cart-product-image-container'><img src={props.url} className='cart-product-img'/></div>
       <div className='cart-product-info'>
       <div className='product-title'>
-            BASMATI RICE
+          
+            {props.name.charAt(0).toUpperCase() + props.name.slice(1)}
         </div>
         <div className='product-price'>
-            <p>{1} × ₹ {100.00}</p>
+            <p>{props.cartQty} × ₹ {props.price}</p>
         </div>
-        <AddRemoveButton  state={[productQuantity]}/>
+        <AddRemoveButton 
+        productDetailsForCart={{
+          name:props.name,
+          url:props.url,
+          id:props.id,
+          price:props.price
+        }}
+        state={props.cartQty}
+        />
       </div>
       <div className='cart-product-total-price'>
-      <p>₹ {100.00}</p>
+      <p>₹ {props.cartQty*props.price}</p>
       </div>
       
     </div>

@@ -13,7 +13,7 @@ function App() {
   const [products,setProducts] = useState(product_json);
   const [cart,setCart] = useState([]);
  
-
+  
   const addProductCart = (productDetailsForCart) =>{
     const {name:name,url:url,id:id,price:price} = productDetailsForCart
     setCart((prevcart)=>{
@@ -28,7 +28,8 @@ function App() {
         prevcart.map((cart_product)=>{
           if(cart_product.cartId === id){
             // console.log("ddd p", {...cart_product})
-            return {...cart_product,cartQty:cart_product.cartQty+1}
+            console.log(name)
+            return {...cart_product,cartQty:cart_product.cartQty+1,name:name,url:url,price:price}
           }
           else{
             return {...cart_product}
@@ -45,7 +46,7 @@ function App() {
         )
       }else{
         // console.log("Not Found")
-        return [...prevcart,{cartId:id,cartQty:1}]
+        return [...prevcart,{cartId:id,cartQty:1,name:name,url:url,price:price}]
       }
     }
     )
