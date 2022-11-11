@@ -1,4 +1,5 @@
 import React, { useContext, useEffect, useState } from 'react'
+import { Link, useNavigate } from 'react-router-dom';
 import { GlobleInfo } from '../App';
 import AddRemoveButton from '../utils/AddRemoveButton';
 import AddToCartButton from '../utils/AddToCartButton';
@@ -8,7 +9,8 @@ const Product = (props) => {
     const [cart,addProductCart] = myCart; //////////////////---------
     const [productQuantity,setProductQuantity] = product;
     const [cartProductQty , setCartProductQty] = useState(0)
-    
+    const navigate = useNavigate();
+
     function checkQty(id){
       let qty = 0;
       // console.log("---",id)
@@ -23,12 +25,21 @@ const Product = (props) => {
     useEffect(()=>{
       setCartProductQty(checkQty(props.id))
     })
+
+  //  const goToProductDetail = () =>{
+  //    navigate("/product-detail")
+  //  }
 // console.log("hello",cartProductQty)
 // console.log("cart",cart)
   return (
     <div className='product-container'>
         <div className='product-image-container'>
+          <Link
+          to={'product-detail'}
+          state={{detail:props}}
+          >
         <img src={props.url} className='product-img'/>
+        </Link>
         </div>
         <div className='product-title'>
             {props.name.charAt(0).toUpperCase() + props.name.slice(1)}

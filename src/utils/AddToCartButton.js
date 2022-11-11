@@ -14,3 +14,13 @@ const AddToCartButton = (props) => {
 }
 {/* <button className='AddToCartButton' onClick={()=>addProductCart(props.id)}>  <AiOutlineShoppingCart className='cart-icon add-to-cart'/>Add To Cart</button> */}
 export default AddToCartButton
+
+
+//props
+// -
+// productDetailsForCart={{
+//   name:props.name,
+//   url:props.url,
+//   id:props.id,
+//   price:props.price
+// }}

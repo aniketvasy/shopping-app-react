@@ -6,6 +6,7 @@ import {product_json} from './product.js';
 import { Route, Routes } from 'react-router-dom';
 import CartProductList from './Pages/CartProductList';
 import CartProduct from './components/CartProduct';
+import ProductDetail from './Pages/ProductDetail';
 
 export const GlobleInfo = createContext();
 function App() {
@@ -136,6 +137,7 @@ useEffect(()=>{
      <Route path='/' element={<Header/>} >
        <Route index element={<ProductList/>}/>
        <Route path='/cart-product-list' element={<CartProductList/>}/>
+       <Route path='/product-detail' element={<ProductDetail/>}/>
      </Route>
    </Routes>
     </GlobleInfo.Provider>
