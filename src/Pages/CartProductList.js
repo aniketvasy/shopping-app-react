@@ -18,7 +18,7 @@ const CartProductList= () => {
   //   price = {product.price}
   //   />
   // ))
-  console.log(cart)
+  // console.log(cart)
   return (
     <div className='cart'>
     <div className='cart-product-list'>

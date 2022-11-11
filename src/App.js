@@ -110,9 +110,28 @@ function App() {
     )
   }
 
+  const deleteProductCart = (idd) =>{
+    console.log("deleteProductCart called    id is",idd)
+    console.log(cart)
+    setCart((prevcart)=>{
+      return prevcart.filter((product)=>{
+        if(product.cartId== idd){
+          return false;
+        }else{
+          return true;
+        }
+      })
+    })
+  }
+
+useEffect(()=>{
+  console.log("this is cart",cart)
+},[cart])
+
+
   return (
     <>
-    <GlobleInfo.Provider value={{product:[productQuantity,setProductQuantity], product_json:product_json,myCart:[cart,addProductCart,removeProductCart]}}>
+    <GlobleInfo.Provider value={{product:[productQuantity,setProductQuantity], product_json:product_json,myCart:[cart,addProductCart,removeProductCart,deleteProductCart]}}>
     <Routes>
      <Route path='/' element={<Header/>} >
        <Route index element={<ProductList/>}/>
