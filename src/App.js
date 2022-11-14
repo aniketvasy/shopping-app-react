@@ -29,7 +29,7 @@ function App() {
         prevcart.map((cart_product)=>{
           if(cart_product.cartId === id){
             // console.log("ddd p", {...cart_product})
-            console.log(name)
+            // console.log(name)
             return {...cart_product,cartQty:cart_product.cartQty+1,name:name,url:url,price:price}
           }
           else{
@@ -70,9 +70,9 @@ function App() {
             // console.log("ddd p", {...cart_product})
             if(cart_product.cartQty-1==0){
               isZero = true
-              console.log("yes this is zero")
+              // console.log("yes this is zero")
             }
-            console.log(cart_product.cartQty)
+            // console.log(cart_product.cartQty)
             return {...cart_product,cartQty:cart_product.cartQty-1}
           }
           else{
@@ -112,8 +112,8 @@ function App() {
   }
 
   const deleteProductCart = (idd) =>{
-    console.log("deleteProductCart called    id is",idd)
-    console.log(cart)
+    // console.log("deleteProductCart called    id is",idd)
+    // console.log(cart)
     setCart((prevcart)=>{
       return prevcart.filter((product)=>{
         if(product.cartId== idd){
@@ -125,11 +125,11 @@ function App() {
     })
   }
 
-useEffect(()=>{
-  console.log("this is cart",cart)
-},[cart])
+// useEffect(()=>{
+//   console.log("this is cart",cart)
+// },[cart])
 
-
+ console.log(cart)
   return (
     <>
     <GlobleInfo.Provider value={{product:[productQuantity,setProductQuantity], product_json:product_json,myCart:[cart,addProductCart,removeProductCart,deleteProductCart]}}>

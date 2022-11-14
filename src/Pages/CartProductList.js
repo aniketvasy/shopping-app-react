@@ -8,7 +8,7 @@ import uniqid from 'uniqid';
 const CartProductList= () => {
   const {myCart} = useContext(GlobleInfo);
   const [cart,addProductCart] = myCart
-
+console.log("cart",cart)
   const subtotal = () =>{
     let total = 0;
     for(let product of cart){

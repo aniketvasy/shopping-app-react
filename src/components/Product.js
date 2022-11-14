@@ -29,14 +29,14 @@ const Product = (props) => {
   //  const goToProductDetail = () =>{
   //    navigate("/product-detail")
   //  }
-// console.log("hello",cartProductQty)
+console.log("hello",cartProductQty)
 // console.log("cart",cart)
   return (
     <div className='product-container'>
         <div className='product-image-container'>
           <Link
           to={'product-detail'}
-          state={{detail:props}}
+          state={{detail:props,qty:cartProductQty}}
           >
         <img src={props.url} className='product-img'/>
         </Link>
