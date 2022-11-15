@@ -1,9 +1,31 @@
-import React from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import { IoBagCheck } from "react-icons/io5";
+import { useNavigate } from 'react-router-dom';
+import { GlobleInfo } from '../App';
 
 
-const orderDetail = (props) => {
-console.log("======>",props)
+const OrderDetail = (props) => {
+  const {product,methods,myCart,placeOrder} = useContext(GlobleInfo);
+  const [cart,addProductCart] = myCart; //////////////////---------
+  const [checkOut,setCheckOut] = useState([]);
+  const navigate = useNavigate();
+
+const sendData = async () =>{
+  setCheckOut(()=>{
+    placeOrder([{products:{...cart},subtotal:props.subtotal,total:props.subtotal}])
+    navigate("/order-placed")
+    console.log("hi there.....")
+    return [{products:{...cart},subtotal:props.subtotal,total:props.subtotal}]
+  })
+}
+
+const handlePlaceOrder = () =>{
+   placeOrder()
+}
+
+useEffect(()=>{
+console.log("checkOut==>",checkOut)
+},[checkOut])
   return (<>
     <div className='order-detail'>
       <div className='order-detail-titlecomp'>
@@ -51,10 +73,10 @@ console.log("======>",props)
       </div>
     </div>
     <div className='order-checkout-button-comp'>
-      <button className='order-checkout-button'>Checkout <IoBagCheck className='checkout-icon'/></button>
+      <button className='order-checkout-button' onClick={sendData}> Checkout <IoBagCheck className='checkout-icon'/></button>
     </div>
     </>
   )
 }
 
-export default orderDetail
+export default OrderDetail

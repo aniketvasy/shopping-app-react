@@ -14,7 +14,7 @@ const ProductDetail = () => {
     const [cart,addProductCart] = myCart; 
     const [update,setUpdate] = useState(10)
     const forceUpdate=()=>{
-        console.log("update",update)
+        // console.log("update",update)
         setUpdate(update+1);
     }
 
@@ -27,7 +27,7 @@ const ProductDetail = () => {
             }
         })
     },[cart])
-console.log("pqty",pQty)
+// console.log("pqty",pQty)
   return (
     <>
     <div className='product-detail'>

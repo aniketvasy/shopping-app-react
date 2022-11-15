@@ -7,12 +7,33 @@ import { Route, Routes } from 'react-router-dom';
 import CartProductList from './Pages/CartProductList';
 import CartProduct from './components/CartProduct';
 import ProductDetail from './Pages/ProductDetail';
+import OrderPlaced from './Pages/OrderPlaced';
 
 export const GlobleInfo = createContext();
+
 function App() {
   const [productQuantity,setProductQuantity] = useState(10)
   const [products,setProducts] = useState(product_json);
   const [cart,setCart] = useState([]);
+
+  const placeOrder= (order) =>{
+    const headers = new Headers()
+    headers.append("Content-Type", "application/json")
+
+    const body = {
+      "order": order
+    }
+
+    const options = {
+      method: "POST",
+      headers,
+      mode: "cors",
+      body: JSON.stringify(body),
+    }
+
+    fetch("https://eohwatz76nodu3o.m.pipedream.net", options)
+    setCart([])
+  }
  
   
   const addProductCart = (productDetailsForCart) =>{
@@ -129,15 +150,16 @@ function App() {
 //   console.log("this is cart",cart)
 // },[cart])
 
- console.log(cart)
+//  console.log(cart)
   return (
     <>
-    <GlobleInfo.Provider value={{product:[productQuantity,setProductQuantity], product_json:product_json,myCart:[cart,addProductCart,removeProductCart,deleteProductCart]}}>
+    <GlobleInfo.Provider value={{product:[productQuantity,setProductQuantity], product_json:product_json,myCart:[cart,addProductCart,removeProductCart,deleteProductCart], placeOrder:placeOrder}}>
     <Routes>
      <Route path='/' element={<Header/>} >
        <Route index element={<ProductList/>}/>
        <Route path='/cart-product-list' element={<CartProductList/>}/>
        <Route path='/product-detail' element={<ProductDetail/>}/>
+       <Route path='/order-placed' element={<OrderPlaced/>}/>
      </Route>
    </Routes>
     </GlobleInfo.Provider>

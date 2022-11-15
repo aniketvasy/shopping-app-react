@@ -390,3 +390,9 @@ position: relative;
   font-weight: bold;
   font-size: 15px;
 }
+
+.order-placed-copm{
+  display: flex;
+  justify-content: center;
+  margin-top: 55px;
+}

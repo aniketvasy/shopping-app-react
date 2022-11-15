@@ -29,7 +29,7 @@ const Product = (props) => {
   //  const goToProductDetail = () =>{
   //    navigate("/product-detail")
   //  }
-console.log("hello",cartProductQty)
+// console.log("hello",cartProductQty)
 // console.log("cart",cart)
   return (
     <div className='product-container'>
