@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState } from 'react'
-import { useLocation } from 'react-router-dom'
+import { Link, useLocation } from 'react-router-dom'
 import { GlobleInfo } from '../App';
 import AddRemoveButton from '../utils/AddRemoveButton';
 import AddToCartButton from '../utils/AddToCartButton';
@@ -74,11 +74,14 @@ const ProductDetail = () => {
               />
               </div>
             }  
-            {cart.length && <div className='goToCartPageComp'>
+           <Link to={'/cart-product-list'}>
+            {
+            cart.length && <div className='goToCartPageComp'>
                 <button className='goToCartPage'>
                     Go To Cart
                 </button>
             </div>}
+            </Link>
         </div>
     </div>
     </>

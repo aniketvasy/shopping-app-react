@@ -15,8 +15,9 @@ function App() {
   const [productQuantity,setProductQuantity] = useState(10)
   const [products,setProducts] = useState(product_json);
   const [cart,setCart] = useState([]);
+  const [loading,setLoading] = useState(true)
 
-  const placeOrder= (order) =>{
+  const placeOrder= async (order) =>{
     const headers = new Headers()
     headers.append("Content-Type", "application/json")
 
@@ -31,7 +32,7 @@ function App() {
       body: JSON.stringify(body),
     }
 
-    fetch("https://eohwatz76nodu3o.m.pipedream.net", options)
+    await fetch("https://eohwatz76nodu3o.m.pipedream.net", options)
     setCart([])
   }
  

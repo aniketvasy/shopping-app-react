@@ -31,7 +31,14 @@ body{
   display: flex;
   gap: 18px;
   margin-right: auto;
+  text-decoration: none;
 }
+
+a{
+  text-decoration: none;
+  color: inherit;
+}
+
 
 .cart-icon-box{
 display: flex;

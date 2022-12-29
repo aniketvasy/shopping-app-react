@@ -20,10 +20,18 @@ const Header = () => {
         </div>
    </Link>
         <nav className='menu'>
+        <Link to={'/'}>
             <p className='nav-names nav-home'>Home</p>
+        </Link>
+        <Link to={'/'}>
             <p className='nav-names nav-products'>Products</p>
+        </Link>
+        <Link to={'/'}>
             <p className='nav-names nav-aboutUs'>About Us</p>
+        </Link>
+        <Link to={'/'}>
             <p className='nav-names nav-contactUs'>Contact Us</p>
+         </Link>
         </nav>
         <Link to={'/cart-product-list'}>
         <div className='cart-icon-box'>
